@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-between mb-3">
+    <h3 class="text-info">Credit Card Log</h3>
+    <button class="btn btn-success" routerLink="/payment">Make Payment</button>
+</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Card Number</th>
+        <th scope="col">Holder Name</th>
+        <th scope="col">Ex Date</th>
+        <th scope="col">CCV</th>
+        <th scope="col">Amount</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let log of logs">
+            <th scope="row">{{ log.creditCardNumber }}</th>
+            <td>{{ log.cardHolderName }}</td>
+            <td>{{ log.expirationDate }}</td>
+            <td>{{ log.ccv }}</td>
+            <td>{{ log.amount }} $</td>
+        </tr>
+    </tbody>
+</table>
+<div class="alert alert-info text-center" *ngIf="logs.length == 0">No data to view</div>

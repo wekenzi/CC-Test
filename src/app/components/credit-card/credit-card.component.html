@@ -1,0 +1,46 @@
+<div class="credit-card">
+    <div class="card">
+        <div class="card-header">
+            Credit Card Details
+        </div>
+        <div class="card-body">
+            <form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+                <div class="form-row">
+                  <div class="form-group col-12">
+                    <label for="CCN">Credit Card Number</label>
+                    <input type="text" class="form-control" id="CCN" placeholder="2789564215234568" formControlName="creditCardNumber" autocomplete="off" maxlength="16">
+                    <small class="text-small text-danger" *ngIf="submitted && f.creditCardNumber.errors">Type valid CC Number</small>
+                  </div>
+                  <div class="form-group col-12">
+                    <label for="CHN">Card Holder Name</label>
+                    <input type="text" class="form-control" id="CHN" placeholder="Ali Ahmed" formControlName="cardHolderName" autocomplete="off">
+                    <small class="text-small text-danger" *ngIf="submitted && f.cardHolderName.errors">this field is required</small>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-5">
+                    <label for="ED">Expiration Date</label>
+                    <input type="date" class="form-control" id="ED" formControlName="expirationDate" autocomplete="off">
+                    <small class="text-small text-danger" *ngIf="submitted && f.expirationDate.errors">Type valid expiration date</small>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="CCV">CCV</label>
+                    <input type="text" class="form-control" placeholder="564" id="CCV" maxlength="3" formControlName="ccv" autocomplete="off">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="amount">Amount</label>
+                    <input type="number" class="form-control" placeholder="600" min="1" id="amount" formControlName="amount" autocomplete="off">
+                    <small class="text-small text-danger" *ngIf="submitted && f.amount.errors">Type valid expiration amount</small>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary w-100" [disabled]="loading">
+                    <span *ngIf="!loading">Pay</span>
+                    <div *ngIf="loading">
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        <span class="ml-2">Loading...</span>
+                    </div>
+                </button>
+              </form>
+        </div>
+    </div>
+</div>
